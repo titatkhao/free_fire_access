@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">Free Fire Access</string>
+    <string name="service_desc">Reads Free Fire menus aloud and announces zone and defeat events using your text to speech settings.</string>
+</resources>
