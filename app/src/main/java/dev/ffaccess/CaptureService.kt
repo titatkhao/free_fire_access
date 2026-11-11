@@ -1,3 +1,4 @@
+
 package dev.ffaccess
 
 import android.app.Notification
@@ -95,7 +96,6 @@ class CaptureService : Service() {
             val mp: MediaProjection? =
                 mpm.getMediaProjection(code, data)
 
-            // FIX: Handle a null MediaProjection safely.
             if (mp == null) {
                 stopSelf()
                 return START_NOT_STICKY
@@ -174,5 +174,4 @@ class CaptureService : Service() {
 
         super.onDestroy()
     }
-}   }
 }
