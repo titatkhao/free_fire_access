@@ -24,12 +24,13 @@ object Patterns {
         Regex("leave (the )?(blue|poison) ?zone", RegexOption.IGNORE_CASE),
     )
 
-    // Center-screen banner for YOUR kills. Group 1 = verb, group 2 = victim name.
-    val KILL = Regex("(knocked down|eliminated|defeated|killed)\\s+(.{2,24})", RegexOption.IGNORE_CASE)
+    // Center-screen banner for YOUR kills only. It must START with the verb (optionally "You"),
+    // so kill-feed lines about other players ("A eliminated B") never match. Group 2 = victim name.
+    val KILL = Regex("^(?:you\\s+)?(knocked down|eliminated|defeated|killed)\\s+(.{2,24})$", RegexOption.IGNORE_CASE)
 
     // Your own health number on the HUD, e.g. "HP 85" / "Health: 85". Group 1 = number.
     // If your HUD shows the number differently (e.g. "85/200"), change this.
-    val HEALTH = Regex("(?:hp|health)\\D{0,3}(\\d{1,3})", RegexOption.IGNORE_CASE)
+    val HEALTH = Regex("(?:hp|health)\\D{0,3}([0-9OolISB]{1,3})", RegexOption.IGNORE_CASE)
 
     // Progress text, e.g. "Loading 45%". Group 1 = percent.
     val PERCENT = Regex("(\\d{1,3})\\s*%")
